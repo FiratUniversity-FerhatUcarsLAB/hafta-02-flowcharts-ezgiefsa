@@ -1,0 +1,63 @@
+digraph HastaneEntegreSistemi {
+    rankdir=TB;
+    node [shape=box, style=rounded];
+
+    BAŞLA [label="BAŞLA", shape=oval];
+    KIMLIK [label="TC ve Şifre Gir"];
+    KIMLIK_KONTROL [label="Kimlik Doğrulama", shape=diamond];
+    HATALI [label="Hatalı TC veya Şifre", shape=box];
+    ISLEM_SECIM [label="1-Randevu\n2-Tahlil", shape=diamond];
+
+    // Randevu adımları
+    POLIKLINIK_SEC [label="Poliklinik Seç"];
+    DOKTOR_LISTE [label="Doktor Listesini Göster"];
+    DOKTOR_SEC [label="Doktor Seç"];
+    SAAT_GOR [label="Uygun Saatleri Göster"];
+    SAAT_SEC [label="Saat Seç"];
+    RANDEVU_ONAY [label="Randevuyu Onayla?", shape=diamond];
+    RANDEVU_KAYIT [label="Randevu Kaydet ve SMS Gönder"];
+    RANDEVU_IPTAL [label="Randevu İptal Edildi"];
+
+    // Tahlil adımları
+    TAHLIL_VAR [label="Tahlil Var mı?", shape=diamond];
+    SONUC_HAZIR [label="Sonuç Hazır mı?", shape=diamond];
+    GORUNTULE_INDİR [label="Görüntüle veya PDF indir", shape=diamond];
+    GORUNTULE [label="Tahlil Görüntüle"];
+    PDF_INDİR [label="PDF İndir"];
+    BEKLE [label="Sonuç hazır değil, bekleyin"];
+    TAHLIL_YOK [label="Tahlil kaydı yok"];
+
+    BITIR [label="BİTİR", shape=oval];
+
+    // Akış bağlantıları
+    BAŞLA -> KIMLIK;
+    KIMLIK -> KIMLIK_KONTROL;
+    KIMLIK_KONTROL -> ISLEM_SECIM [label="Evet"];
+    KIMLIK_KONTROL -> HATALI [label="Hayır"];
+    HATALI -> BITIR;
+
+    // Randevu akışı
+    ISLEM_SECIM -> POLIKLINIK_SEC [label="1"];
+    POLIKLINIK_SEC -> DOKTOR_LISTE;
+    DOKTOR_LISTE -> DOKTOR_SEC;
+    DOKTOR_SEC -> SAAT_GOR;
+    SAAT_GOR -> SAAT_SEC;
+    SAAT_SEC -> RANDEVU_ONAY;
+    RANDEVU_ONAY -> RANDEVU_KAYIT [label="E"];
+    RANDEVU_ONAY -> RANDEVU_IPTAL [label="H"];
+    RANDEVU_KAYIT -> BITIR;
+    RANDEVU_IPTAL -> BITIR;
+
+    // Tahlil akışı
+    ISLEM_SECIM -> TAHLIL_VAR [label="2"];
+    TAHLIL_VAR -> SONUC_HAZIR [label="Evet"];
+    TAHLIL_VAR -> TAHLIL_YOK [label="Hayır"];
+    TAHLIL_YOK -> BITIR;
+    SONUC_HAZIR -> GORUNTULE_INDİR [label="Evet"];
+    SONUC_HAZIR -> BEKLE [label="Hayır"];
+    BEKLE -> BITIR;
+    GORUNTULE_INDİR -> GORUNTULE [label="1"];
+    GORUNTULE_INDİR -> PDF_INDİR [label="2"];
+    GORUNTULE -> BITIR;
+    PDF_INDİR -> BITIR;
+}
