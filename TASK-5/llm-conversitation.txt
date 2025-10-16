@@ -1,0 +1,19 @@
+Ezgi: Akıllı ev güvenlik sistemi 7/24 çalışır. Ana döngü içinde sensör okuma, tehdit algılama, alarm verme ve bildirim gönderme süreçlerini içeren pseudocode yaz. Notlar: Ana döngü sürekli çalışır, her döngüde tüm sensörler kontrol edilir, tehdit seviyesine göre aksiyon alınır, alarm sıfırlama komutu gelene kadar devam eder. DOT dilinde gösterim yapılacak.
+
+ChatGPT: Mantıksal pseudocode hazırlandı. Tehdit seviyesine göre farklı aksiyonlar, alarm ve bildirim süreçleri eklendi. DOT diyagramı için örnek verildi.
+
+Ezgi: Yazdığım sözde kodu MD formatında GitHub’a yükleyecek şekilde hazırla.
+
+ChatGPT: MD formatında pseudocode hazırlandı, DOT diyagramı dahil edildi.
+
+Ezgi: DOT diyagramı olmasın, sadece sözde kodu MD formatında hazırla.
+
+ChatGPT: Sadece sözde kodun MD formatı hazırlandı.
+
+Ezgi: Tek sütun halinde hazırla.
+
+ChatGPT: Sözde kod tek sütun halinde, girintiler korunmuş şekilde MD formatında hazırlandı.
+
+Ezgi: Konuşma geçmişini TXT formatında kısa bir şekilde hazırla.
+
+ChatGPT: Konuşma geçmişi kısa ve öz şekilde TXT formatına dönüştürüldü.
