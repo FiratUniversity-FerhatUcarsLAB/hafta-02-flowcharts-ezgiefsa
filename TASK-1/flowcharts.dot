@@ -1,0 +1,72 @@
+digraph ATM_ParaCekme {
+    rankdir=TB;
+    node [fontname="Arial", fontsize=11];
+
+    // Düğüm stilleri
+    start [shape=oval, label="BAŞLA"];
+    end [shape=oval, label="BİTİR"];
+
+    // Girdi / çıktı düğümleri
+    kart [shape=parallelogram, label="OKU: Kart takıldı mı? (E/H)"];
+    pin_giris [shape=parallelogram, label="OKU: PIN kodu girin"];
+    bakiye_yaz [shape=parallelogram, label="YAZ: Hesap bakiyesi ve limit bilgisi"];
+    tutar_giris [shape=parallelogram, label="OKU: Çekmek istediğiniz tutarı girin"];
+    onay_giris [shape=parallelogram, label="OKU: İşlem onayı (E/H)"];
+    tekrar_giris [shape=parallelogram, label="OKU: Başka işlem ister misiniz? (E/H)"];
+
+    // İşlem düğümleri
+    tanimla [shape=box, label="Değişkenleri tanımla:\nPIN, bakiye, limit, hak sayısı vb."];
+    pin_arttir [shape=box, label="pin_attempts = pin_attempts + 1"];
+    bakiye_azalt [shape=box, label="account_balance -= tutar\n daily_withdrawn += tutar"];
+    cikis [shape=box, label="Kart iade ediliyor"];
+
+    // Karar düğümleri
+    kart_kontrol [shape=diamond, label="Kart takıldı mı?"];
+    pin_dogrula [shape=diamond, label="PIN doğru mu?"];
+    hak_var_mi [shape=diamond, label="Kalan hak > 0 mı?"];
+    tutar_kontrol [shape=diamond, label="Tutar > 0 ve 20 TL katı mı?"];
+    bakiye_kontrol [shape=diamond, label="Yeterli bakiye var mı?"];
+    limit_kontrol [shape=diamond, label="Günlük limit aşılır mı?"];
+    onay [shape=diamond, label="Onay E mi?"];
+    tekrar [shape=diamond, label="Tekrar işlem E mi?"];
+
+    // Akış bağlantıları
+    start -> kart;
+    kart -> kart_kontrol;
+    kart_kontrol -> tanimla [label="E"];
+    kart_kontrol -> end [label="H"];
+
+    tanimla -> pin_giris;
+    pin_giris -> pin_arttir;
+    pin_arttir -> pin_dogrula;
+
+    pin_dogrula -> bakiye_yaz [label="Evet"];
+    pin_dogrula -> hak_var_mi [label="Hayır"];
+
+    hak_var_mi -> pin_giris [label="Evet"];
+    hak_var_mi -> end [label="Hayır\n(Hesap bloke)"];
+
+    bakiye_yaz -> tutar_giris;
+    tutar_giris -> tutar_kontrol;
+
+    tutar_kontrol -> bakiye_kontrol [label="Evet"];
+    tutar_kontrol -> tutar_giris [label="Hayır"];
+
+    bakiye_kontrol -> limit_kontrol [label="Evet"];
+    bakiye_kontrol -> tutar_giris [label="Hayır (Yetersiz bakiye)"];
+
+    limit_kontrol -> onay_giris [label="Evet"];
+    limit_kontrol -> tutar_giris [label="Hayır (Limit aşıldı)"];
+
+    onay_giris -> onay;
+    onay -> bakiye_azalt [label="Evet"];
+    onay -> tutar_giris [label="Hayır"];
+
+    bakiye_azalt -> tekrar_giris;
+    tekrar_giris -> tekrar;
+
+    tekrar -> bakiye_yaz [label="Evet"];
+    tekrar -> cikis [label="Hayır"];
+
+    cikis -> end;
+}
