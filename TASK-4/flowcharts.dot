@@ -1,0 +1,75 @@
+digraph DersKayit {
+    rankdir=TB;
+
+    // Başlangıç
+    BASLA [shape=oval, label="BAŞLA"];
+
+    // Öğrenci girişi
+    GIRIS [shape=box, label="Öğrenci girişi"];
+
+    // Ders listesi görüntüleme
+    LISTE [shape=box, label="Ders listesi görüntüle"];
+
+    // Döngü başlangıcı
+    DONGU [shape=box, label="Her ders için döngü"];
+
+    // Ders seçimi kontrolü
+    SECILDI_MI [shape=diamond, label="Öğrenci dersi seçti mi?"];
+
+    // Kontroller
+    KONTENJAN [shape=diamond, label="Kontenjan dolu mu?"];
+    ON_KOSUL [shape=diamond, label="Ön koşul tamam mı?"];
+    ZAMAN [shape=diamond, label="Zaman çakışıyor mu?"];
+    KREDI [shape=diamond, label="Kredi limiti aşıldı mı?"];
+    DANS_ONAY [shape=diamond, label="Danışman onayı gerekli mi?"];
+    DANS_ONAY_ALINDI [shape=diamond, label="Danışman onayı alındı mı?"];
+
+    // Mesajlar ve işlemler
+    MESAJ_KONTENJAN [shape=box, label="Kontenjan dolu mesajı"];
+    MESAJ_ON_KOSUL [shape=box, label="Ön koşul mesajı"];
+    MESAJ_ZAMAN [shape=box, label="Saat çakışması mesajı"];
+    MESAJ_KREDI [shape=box, label="Kredi limiti mesajı"];
+    MESAJ_DANS [shape=box, label="Danışman onayı bekleniyor mesajı"];
+    DERS_SECILDI [shape=box, label="Ders seçildi"];
+    ONAY [shape=box, label="Dersleri onayla"];
+
+    // Bitiş
+    BITIR [shape=oval, label="BİTİR"];
+    BOS [shape=box, label="Ders kaydı tamamlanamadı"];
+
+    // Oklar
+    BASLA -> GIRIS -> LISTE -> DONGU -> SECILDI_MI;
+    SECILDI_MI -> DONGU [label="Hayır"];
+    SECILDI_MI -> KONTENJAN [label="Evet"];
+
+    KONTENJAN -> MESAJ_KONTENJAN [label="Evet"];
+    KONTENJAN -> ON_KOSUL [label="Hayır"];
+
+    ON_KOSUL -> MESAJ_ON_KOSUL [label="Hayır"];
+    ON_KOSUL -> ZAMAN [label="Evet"];
+
+    ZAMAN -> MESAJ_ZAMAN [label="Evet"];
+    ZAMAN -> KREDI [label="Hayır"];
+
+    KREDI -> MESAJ_KREDI [label="Evet"];
+    KREDI -> DANS_ONAY [label="Hayır"];
+
+    DANS_ONAY -> DANS_ONAY_ALINDI [label="Evet"];
+    DANS_ONAY -> MESAJ_DANS [label="Hayır"];
+
+    DANS_ONAY_ALINDI -> DERS_SECILDI [label="Evet"];
+    DERS_SECILDI -> DONGU;
+
+    // Mesajlardan sonra döngüye dön
+    MESAJ_KONTENJAN -> DONGU;
+    MESAJ_ON_KOSUL -> DONGU;
+    MESAJ_ZAMAN -> DONGU;
+    MESAJ_KREDI -> DONGU;
+    MESAJ_DANS -> DONGU;
+
+    // Döngü tamamlandıktan sonra onay
+    DONGU -> ONAY;
+
+    ONAY -> BITIR;
+    ONAY -> BOS [label="seçilen_dersler boş ise"];
+}
