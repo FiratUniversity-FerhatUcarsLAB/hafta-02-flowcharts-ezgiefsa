@@ -1,0 +1,33 @@
+HASTANE RANDEVU SİSTEMİ - KISA DİYALOG GEÇMİŞİ VE PROJE AÇIKLAMASI
+====================================================================
+
+💬 KISA DİYALOG GEÇMİŞİ
+-----------------------
+Kullanıcı: Hastane randevu sistemi için algoritma istiyorum: kimlik doğrulama, poliklinik seçimi, doktor listesi, uygun saatler, randevu onayı ve SMS gönderme.
+Asistan: Elbette, sözde kodu ve akış diyagramını birlikte hazırlayabilirim.
+Kullanıcı: Tamam, GitHub’a yükleyeceğim şekilde hazırla.
+Asistan: İşte pseudocode ve Graphviz DOT sürümüyle birlikte proje dosyası.
+Kullanıcı: Kodları çıkar, sadece açıklama kalsın.
+
+🩺 PROJE AÇIKLAMASI
+-------------------
+Bu proje, hastane bilgi sistemlerinde kullanılan randevu yönetim sürecini modellemektedir.
+Sistemde kimlik doğrulama, poliklinik seçimi, doktor listesini görüntüleme, uygun randevu saatlerini sunma, randevunun onaylanması ve bilgilendirme SMS’inin gönderilmesi gibi temel adımlar yer alır.
+
+📋 GENEL AMAÇ
+-------------
+- Hastaların çevrimiçi randevu alma sürecini kolaylaştırmak.
+- Bilgilerin doğrulanmasını sağlamak.
+- Otomatik SMS bilgilendirmesiyle kullanıcı deneyimini geliştirmek.
+
+⚙️ MODÜLLER
+------------
+1. Kimlik Doğrulama Modülü – Hasta giriş bilgilerini kontrol eder.
+2. Poliklinik Seçimi Modülü – Bölüm ve doktor tercihlerini yönetir.
+3. Randevu İşlemleri Modülü – Uygun saatlerin gösterimi ve onaylama adımlarını içerir.
+4. SMS Bildirim Modülü – Randevu sonucu hastaya bildirim gönderir.
+
+🧩 KULLANIM ALANI
+-----------------
+Bu yapı, sağlık bilişim sistemleri veya yazılım mühendisliği derslerinde
+örnek algoritma ve sistem akışı olarak kullanılabilir.
