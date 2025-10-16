@@ -1,0 +1,42 @@
+digraph AkilliEvGuvenlik {
+    rankdir=TB;
+    node [shape=box];
+
+    BASLA [shape=oval, label="BAŞLA"];
+    SUREKLI [shape=diamond, label="Sürekli"];
+    SENSOR_OKU [label="Sensörleri Oku"];
+    TEHDIT [shape=diamond, label="Tehdit Seviyesi?"];
+    DUSUK [label="Düşük seviye"];
+    ORTA [label="Orta seviye"];
+    YUKSEK [label="Yüksek seviye"];
+    BILDIRIM_DUSUK [shape=parallelogram, label="Bildirim Gönder: Düşük"];
+    ALARM_OR [shape=box, label="Alarm Ver: Orta"];
+    BILDIRIM_OR [shape=parallelogram, label="Bildirim Gönder: Orta"];
+    ALARM_YUK [shape=box, label="Alarm Ver: Yüksek"];
+    BILDIRIM_YUK [shape=parallelogram, label="Bildirim Gönder: Yüksek"];
+    ALARM_SIFIRLA [shape=diamond, label="Alarm Sıfırla Komutu?"];
+    SIFIRLA [shape=box, label="Alarmı Sıfırla"];
+    BITIR [shape=oval, label="BİTİR"];
+
+    BASLA -> SUREKLI;
+    SUREKLI -> SENSOR_OKU [label="Sürekli"];
+    SENSOR_OKU -> TEHDIT;
+    TEHDIT -> DUSUK [label="Düşük"];
+    TEHDIT -> ORTA [label="Orta"];
+    TEHDIT -> YUKSEK [label="Yüksek"];
+    DUSUK -> BILDIRIM_DUSUK;
+    ORTA -> ALARM_OR;
+    ORTA -> BILDIRIM_OR;
+    YUKSEK -> ALARM_YUK;
+    YUKSEK -> BILDIRIM_YUK;
+
+    BILDIRIM_DUSUK -> ALARM_SIFIRLA;
+    ALARM_OR -> ALARM_SIFIRLA;
+    BILDIRIM_OR -> ALARM_SIFIRLA;
+    ALARM_YUK -> ALARM_SIFIRLA;
+    BILDIRIM_YUK -> ALARM_SIFIRLA;
+
+    ALARM_SIFIRLA -> SIFIRLA [label="Evet"];
+    ALARM_SIFIRLA -> SUREKLI [label="Hayır"];
+    SIFIRLA -> SUREKLI;
+}
