@@ -1,0 +1,48 @@
+2025-10-13 18:46 - Kullanıcı:
+Sepet yönetimi açıklaması:
+
+2025-10-13 18:46 - ChatGPT:
+Bu sistemi pseudocode olarak yaz. Döngüler için DÖNGÜ, koşullar için EĞER-ISE kullan.
+
+2025-10-13 18:46 - Kullanıcı:
+Pseudocode’u Graphviz DOT formatına çevir. rankdir=TB kullan. Karar noktalarında EVET/HAYIR etiketlerini unutma.
+
+2025-10-13 18:46 - ChatGPT:
+Tamam, pseudocode’u Graphviz DOT formatına çevirebilirim. Diamond ile karar noktaları, box ile işlemler, oval ile başlangıç/bitir gösterilir.
+
+2025-10-13 18:05 - Kullanıcı:
+ATM pseudocode yazımı.
+
+2025-10-13 18:05 - ChatGPT:
+Bu pseudocode’u Graphviz DOT diline çevir. Başla/Bitir için oval, karar noktaları için diamond kullan.
+
+2025-10-13 18:00 - Kullanıcı:
+Mikroişlemci nedir? Mikrodenetleyici nedir? Farkını izah ediniz.
+
+2025-10-13 18:00 - ChatGPT:
+Mikroişlemci: Temel işlem birimidir, CPU içerir, harici bellek ve çevre birimleri gerektirir.  
+Mikrodenetleyici: CPU + RAM + ROM + I/O birimleri tek çipte, gömülü sistemler için tasarlanmış.
+
+2025-10-13 19:00 - Kullanıcı:
+Akıllı ev güvenlik sistemi pseudocode yaz. Ana döngü sürekli çalışır.
+
+2025-10-13 19:00 - ChatGPT:
+Pseudocode hazırlandı: sensör okuma, tehdit algılama, alarm ve bildirim süreçleri ana döngüde yer alır.
+
+2025-10-13 19:00 - Kullanıcı:
+Ders kayıt akışı açıklaması: kontenjan, ön koşul, zaman çakışması.
+
+2025-10-13 19:00 - ChatGPT:
+Detaylı pseudocode ve Graphviz DOT formatı hazırlandı.
+
+2025-10-14 18:00 - Kullanıcı:
+0’dan π/2’ye kadar sin(x)’in integrali ve diğer matematiksel ifadeler.
+
+2025-10-14 18:00 - ChatGPT:
+İstenen fonksiyonların türev ve integral ifadeleri sembolik olarak yazıldı.
+
+2025-10-14 20:43 - Kullanıcı:
+n terimli bir dizinin toplamı sigma sembol ile, x değişkenine göre türev, e^x türevi.
+
+2025-10-14 20:43 - ChatGPT:
+Türev ve integral işlemleri açık şekilde gösterildi.
